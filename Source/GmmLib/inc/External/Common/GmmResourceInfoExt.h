@@ -181,7 +181,7 @@ typedef struct GMM_RESOURCE_ALIGNMENT_REC
 // TBD - Place holder for GMM_RESOURCE_FLAG definition.
 //---------------------------------------------------------------------------
 #include "GmmResourceFlags.h"
-#if defined __linux__
+#ifndef _WIN32
     #include "External/Linux/GmmResourceInfoLinExt.h"
 #endif
 

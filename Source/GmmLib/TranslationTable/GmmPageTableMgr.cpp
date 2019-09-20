@@ -28,7 +28,7 @@ Description: UMD-TT manager (manages both TR-TT and AUX-TT in user mode space)
 #include "../TranslationTable/GmmUmdTranslationTable.h"
 #include "External/Common/GmmClientContext.h"
 
-#if defined(__linux__)
+#if !defined(_WIN32)
 #include "Internal/Linux/GmmResourceInfoLinInt.h"
 #endif
 
@@ -44,7 +44,7 @@ Description: UMD-TT manager (manages both TR-TT and AUX-TT in user mode space)
         LeaveCriticalSection(&PoolLock); \
     }
 
-#if defined(__linux__)
+#if !defined(_WIN32)
 GMM_STATUS GmmLib::__GmmDeviceAlloc(GmmClientContext *        pClientContext,
                                     GMM_DEVICE_CALLBACKS_INT *pDeviceCbInt,
                                     GMM_DEVICE_ALLOC *        pAlloc)
@@ -607,7 +607,7 @@ GMM_STATUS GmmLib::GmmPageTableMgr::UpdateAuxTable(const GMM_DDI_UPDATEAUXTABLE 
     return GMM_SUCCESS;
 }
 
-#if defined(__linux__) && !_WIN32
+#if !defined(_WIN32)
 /////////////////////////////////////////////////////////////////////////////////////
 /// Gets size of PageTable buffer object (BOs) list
 ///
