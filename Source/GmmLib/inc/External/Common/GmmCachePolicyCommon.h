@@ -58,7 +58,7 @@ namespace GmmLib
             {
                 #if defined(__GMM_KMD__) || _WIN32
                     InterlockedIncrement((LONG *)&RefCount);
-                #elif defined(__linux__)
+                #elif defined(__GNUC__)
                     __sync_fetch_and_add(&RefCount, 1);
                 #endif
                 //TODO[Android]
@@ -68,7 +68,7 @@ namespace GmmLib
             {
                 #if defined(__GMM_KMD__) || _WIN32
                     return(InterlockedDecrement((LONG *)&RefCount));
-                #elif defined(__linux__)
+                #elif defined(__GNUC__)
                     return(__sync_sub_and_fetch(&RefCount, 1));
                 #endif
                 //TODO[Android]
